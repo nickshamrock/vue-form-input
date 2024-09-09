@@ -36,6 +36,10 @@ const hasValidChildren = () => {
 const hasValidUser = () => {
   return userName.value.trim() !== '' && userAge.value !== null;
 };
+
+import { useInputStore } from '@/store/InputStore';
+
+const inputStore = useInputStore();
 </script>
 
 <template>
@@ -63,6 +67,9 @@ const hasValidUser = () => {
           </ul>
         </div>
       </div>
+    </div>
+    <div>
+      <p>{{ inputStore.testText }}</p>
     </div>
   </section>
 </template>

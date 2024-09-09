@@ -68,6 +68,10 @@ const isInputInfoFull = computed(() => {
   const areChildrenComplete = children.value.every((child) => child.name.trim() !== '' && child.age !== null && child.age !== '');
   return isPersonalComplete && areChildrenComplete;
 });
+
+import { useInputStore } from '@/store/InputStore';
+
+const inputStore = useInputStore();
 </script>
 <template>
   <main class="h-full min-h-[616px] px-4 py-[30px]">
@@ -150,6 +154,10 @@ const isInputInfoFull = computed(() => {
       >
         Сохранить
       </button>
+    </div>
+
+    <div>
+      <p>{{ inputStore.testText }}</p>
     </div>
     <!-- Конец второй формы с инпутами для детей -->
   </main>
