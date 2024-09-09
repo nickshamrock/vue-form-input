@@ -37,9 +37,9 @@ const hasValidUser = () => {
   return userName.value.trim() !== '' && userAge.value !== null;
 };
 
-import { useInputStore } from '@/store/InputStore';
+// import { useInputStore } from '@/store/InputStore';
 
-const inputStore = useInputStore();
+// const inputStore = useInputStore();
 </script>
 
 <template>
@@ -55,6 +55,7 @@ const inputStore = useInputStore();
           <h2 class="font-medium">Персональные данные</h2>
           <p v-if="!hasValidUser()">Вы не указали данные</p>
           <span v-else class="font-bold">{{ userName }}, {{ userAge }} {{ getAgeSuffix(userAge) }} </span>
+          <!-- <p>{{ inputStore.userName }}</p> -->
         </div>
         <!-- Здесь отображаются данные детей из страницы HomePage -->
         <div>
@@ -67,9 +68,6 @@ const inputStore = useInputStore();
           </ul>
         </div>
       </div>
-    </div>
-    <div>
-      <p>{{ inputStore.testText }}</p>
     </div>
   </section>
 </template>

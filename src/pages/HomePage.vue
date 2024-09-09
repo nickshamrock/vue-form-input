@@ -64,14 +64,15 @@ onMounted(() => {
 
 // Проверка, что все поля для персональных данных и детей заполнены. Если заполнено, то отрываеся кнопка "Сохранить"
 const isInputInfoFull = computed(() => {
-  const isPersonalComplete = userName.value.trim() !== '' && userAge.value !== null && userAge.value !== '';
-  const areChildrenComplete = children.value.every((child) => child.name.trim() !== '' && child.age !== null && child.age !== '');
+  const isPersonalComplete = userName.value.trim() && userAge.value;
+  const areChildrenComplete = children.value.every((child) => child.name.trim() && child.age);
+
   return isPersonalComplete && areChildrenComplete;
 });
 
-import { useInputStore } from '@/store/InputStore';
+// import { useInputStore } from '@/store/InputStore';
 
-const inputStore = useInputStore();
+// const inputStore = useInputStore();
 </script>
 <template>
   <main class="h-full min-h-[616px] px-4 py-[30px]">
@@ -89,6 +90,7 @@ const inputStore = useInputStore();
           autocomplete="on"
         />
       </div>
+
       <!-- Второй инпут с возрастом -->
       <div class="mb-0 flex flex-col rounded px-4 pb-[6px] pt-2 outline outline-2 outline-[#F1F1F1] hover:shadow-lg">
         <label for="age" class="text-[13px] font-normal leading-[15.85px] text-[#1111117A]">Возраст</label>
@@ -116,7 +118,7 @@ const inputStore = useInputStore();
     <!-- Конец первой формы с перс.данными -->
 
     <!-- Начало второй формы с инпутами для детей -->
-    <div v-show="showChildInputs" class="mx-auto flex w-full max-w-[616px] flex-col">
+    <div v-show="children.length > 0" class="mx-auto flex w-full max-w-[616px] flex-col">
       <h2 class="mb-5 text-base font-medium">Дети (макс. 5)</h2>
       <div v-for="(child, index) in children" :key="index" class="mb-[10px] flex flex-wrap gap-[18px] last-of-type:mb-[30px]">
         <!-- Инпут для имени ребенка -->
@@ -156,9 +158,6 @@ const inputStore = useInputStore();
       </button>
     </div>
 
-    <div>
-      <p>{{ inputStore.testText }}</p>
-    </div>
     <!-- Конец второй формы с инпутами для детей -->
   </main>
 </template>
