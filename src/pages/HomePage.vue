@@ -2,13 +2,10 @@
 import { ref, watch, onMounted, computed } from 'vue';
 import PlusButton from '@/components/icons/PlusButton.vue';
 
-// Список детей
 const children = ref([]);
 
-// Состояние показа меню для детей
 const showChildInputs = ref(false);
 
-// Имя и возраст пользователя
 const userName = ref('');
 const userAge = ref(null);
 
@@ -22,7 +19,6 @@ const toggleChildInputs = () => {
   }
 };
 
-// Функция добавления ребенка в массив children
 const addChild = () => {
   if (children.value.length < 5) {
     children.value.push({ name: '', age: '' });
