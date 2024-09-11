@@ -21,12 +21,15 @@ export const useInputStore = defineStore('inputStore', {
     },
     removeChild(index) {
       this.children.splice(index, 1);
+      this.saveChildren();
     },
-    saveChildren() {
-      this.savedChildren = [...this.children];
-    },
+
     saveData() {
       this.saveChildren();
+    },
+
+    saveChildren() {
+      this.savedChildren = [...this.children];
     }
   }
 });

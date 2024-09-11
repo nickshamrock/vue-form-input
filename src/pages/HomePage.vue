@@ -6,8 +6,6 @@ import PlusButton from '@/components/icons/PlusButton.vue';
 
 const inputStore = useInputStore();
 
-const showChildInputs = computed(() => inputStore.children.length > 0);
-
 const addChild = () => {
   if (inputStore.children.length < 5) {
     inputStore.addChild();
@@ -27,6 +25,8 @@ const isInputInfoFull = computed(() => {
 const saveData = () => {
   inputStore.saveData();
 };
+
+const showChildInputs = computed(() => inputStore.children.length > 0);
 </script>
 
 <template>
@@ -47,7 +47,6 @@ const saveData = () => {
       </button>
     </div>
 
-    <!-- Форма для ввода данных о детях -->
     <div v-show="showChildInputs" class="mx-auto flex w-full max-w-[616px] flex-col">
       <h2 class="mb-5 text-base font-medium">Дети (макс. 5)</h2>
       <div
@@ -55,7 +54,7 @@ const saveData = () => {
         :key="index"
         class="mb-[10px] flex flex-wrap gap-[18px] last-of-type:mb-[30px]"
       >
-        <!-- Инпут для имени ребенка -->
+        <!-- child input name -->
         <div class="flex flex-1 flex-col rounded px-4 pb-[6px] pt-2 outline outline-2 outline-[#F1F1F1] hover:shadow-lg">
           <label :for="'child-name-' + index" class="text-[13px] font-normal leading-[15.85px] text-[#1111117A]">Имя</label>
           <input
@@ -68,7 +67,7 @@ const saveData = () => {
           />
         </div>
 
-        <!-- Инпут для возраста ребенка -->
+        <!-- child input age -->
         <div class="mb-0 flex flex-1 flex-col rounded px-4 pb-[6px] pt-2 outline outline-2 outline-[#F1F1F1] hover:shadow-lg">
           <label :for="'child-age-' + index" class="text-[13px] font-normal leading-[15.85px] text-[#1111117A]">Возраст</label>
           <input

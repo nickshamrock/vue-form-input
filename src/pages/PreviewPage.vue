@@ -1,19 +1,9 @@
 <script setup>
 import { computed } from 'vue';
-import { useInputStore } from '@/store/InputStore'; // Подключение хранилища Pinia
+import { useInputStore } from '@/store/InputStore';
+import { getAgeSuffix } from '@/utils/ageSuffix';
 
 const inputStore = useInputStore();
-
-// Функция для склонения "год", "года", "лет"
-const getAgeSuffix = (age) => {
-  if (age % 10 === 1 && age % 100 !== 11) {
-    return 'год';
-  } else if ([2, 3, 4].includes(age % 10) && ![12, 13, 14].includes(age % 100)) {
-    return 'года';
-  } else {
-    return 'лет';
-  }
-};
 
 const hasValidChildren = computed(() => {
   return inputStore.savedChildren.some((child) => child.name.trim() && child.age);
