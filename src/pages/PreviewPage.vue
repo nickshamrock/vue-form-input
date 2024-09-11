@@ -17,7 +17,7 @@ const getAgeSuffix = (age) => {
 
 // Условие показа дисклеймера "Вы не указали детей"
 const hasValidChildren = computed(() => {
-  return inputStore.children.some((child) => child.name.trim() && child.age);
+  return inputStore.savedChildren.some((child) => child.name.trim() && child.age);
 });
 
 // Условие показа дисклеймера "Вы не указали все данные"
@@ -48,7 +48,7 @@ const hasValidUser = computed(() => {
           <p v-if="!hasValidChildren">Вы не указали детей</p>
           <ul v-else class="flex flex-col gap-5">
             <li
-              v-for="(child, index) in inputStore.children"
+              v-for="(child, index) in inputStore.savedChildren"
               :key="index"
               class="w-fit rounded-[5px] bg-[#F1F1F1] px-5 py-[10px] font-bold"
             >
