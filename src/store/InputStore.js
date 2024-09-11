@@ -4,8 +4,8 @@ export const useInputStore = defineStore('inputStore', {
   state: () => ({
     userName: '',
     userAge: null,
-    children: [], // Массив для детей
-    savedChildren: [] // Новый массив для сохраненных данных о детях
+    children: [],
+    savedChildren: [] // show in the PreviewPage
   }),
   actions: {
     updateUserName(newName) {

@@ -15,12 +15,10 @@ const getAgeSuffix = (age) => {
   }
 };
 
-// Условие показа дисклеймера "Вы не указали детей"
 const hasValidChildren = computed(() => {
   return inputStore.savedChildren.some((child) => child.name.trim() && child.age);
 });
 
-// Условие показа дисклеймера "Вы не указали все данные"
 const hasValidUser = computed(() => {
   return inputStore.userName.trim() && inputStore.userAge;
 });
@@ -29,11 +27,10 @@ const hasValidUser = computed(() => {
 <template>
   <section class="h-full min-h-[616px] px-[51px] py-[30px]">
     <div class="flex gap-[34px] text-base">
-      <!-- Оставил место для аватара согласно макету в Figma -->
+      <!-- place for avatar -->
       <div class="w-full max-w-[290px] max-md:hidden"></div>
-      <!-- Оставил место для аватара согласно макету в Figma -->
+      <!-- place for avatar -->
 
-      <!-- Здесь отображаются данные из страницы HomePage -->
       <div class="flex w-full max-w-[197px] flex-col gap-[60px]">
         <div class="flex flex-col gap-5">
           <h2 class="font-medium">Персональные данные</h2>
@@ -42,7 +39,7 @@ const hasValidUser = computed(() => {
             >{{ inputStore.userName }}, {{ inputStore.userAge }} {{ getAgeSuffix(inputStore.userAge) }}</span
           >
         </div>
-        <!-- Здесь отображаются данные детей из страницы HomePage -->
+
         <div>
           <h3 class="mb-5 font-medium">Дети</h3>
           <p v-if="!hasValidChildren">Вы не указали детей</p>
