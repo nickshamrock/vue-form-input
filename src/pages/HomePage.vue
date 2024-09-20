@@ -2,15 +2,9 @@
 import { computed } from 'vue';
 import { useInputStore } from '@/store/InputStore';
 import AppUserInput from '@/components/AppUserInput.vue';
-import PlusButton from '@/components/icons/PlusButton.vue';
+import AddChildButton from '@/components/AddChildButton.vue';
 
 const inputStore = useInputStore();
-
-const addChild = () => {
-  if (inputStore.children.length < 5) {
-    inputStore.addChild();
-  }
-};
 
 const removeChild = (index) => {
   inputStore.removeChild(index);
@@ -36,15 +30,7 @@ const showChildInputs = computed(() => inputStore.children.length > 0);
 
       <AppUserInput />
 
-      <button
-        class="absolute bottom-[-77px] right-0 ml-auto flex items-center rounded-full border-2 border-[#01A7FD] px-5 py-[10px] outline-[#1111117A] hover:bg-[#6E41E20A] focus:outline-2 active:bg-[#6E41E229]"
-        @click="addChild"
-        :disabled="inputStore.children.length >= 5"
-        :class="{ invisible: inputStore.children.length >= 5 }"
-      >
-        <PlusButton />
-        <span class="ml-2 text-sm font-normal leading-6 text-[#01A7FD]">Добавить ребенка</span>
-      </button>
+      <AddChildButton />
     </div>
 
     <div v-show="showChildInputs" class="mx-auto flex w-full max-w-[616px] flex-col">
